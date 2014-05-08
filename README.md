@@ -6,8 +6,8 @@ This boilerplate contains
 
 * Backbone
 * Marionette
-* Handlebars
+* React.js
 * Gulp
 * SASS, Compass
 * Bower
-* Karma, Mocha, Chai, Sinon, PhantomJS, Istanbul
+* Karma, Jasmine, PhantomJS, Istanbul
