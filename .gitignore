@@ -1,0 +1,12 @@
+node_modules/
+vendorlibs/
+dist/
+**/*.log
+dist/
+.sass-cache/
+*.swp
+.DS_Store
+app/css/
+app/libs/
+app/coverage/
+app/js/templates/

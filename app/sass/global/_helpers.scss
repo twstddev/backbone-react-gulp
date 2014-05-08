@@ -1,0 +1,72 @@
+/**
+ * @brief Removes value units and returns pure
+ * integer.
+ */
+@function parse-int( $value ) {
+	@return $value / ( $value * 0 + 1 );
+}
+
+/**
+ * @brief Calculates font size into rem units
+ * and provides a fallback to px.
+ */
+@mixin font-size( $size: 12 ) {
+	font-size: $size + px;
+	font-size: $size / parse-int( $base-font-size ) + rem;
+}
+
+/**
+ * @brief Makes em value out of pixel passed
+ * number. Make sure that you pass base if
+ * parent element font size has been changed.
+ */
+@function font-em( $size, $base: 12 ) {
+	@return $size / $base + em;
+}
+
+/**
+ * @brief A very simple mixin that clears
+ * unwanted floating on the page.
+ * TODO: Improve it later.
+ */
+@mixin clear() {
+	clear: both;
+}
+
+/**
+ * @brief Generate CSS triangle.
+ *
+ * @param[in] Int width is the width of the triangle
+ * @param[in] Int height is the height of the triangle
+ * @param[in] String color is the color of the triangle
+ * @param[in] String direction is the direction of the triangle
+ */
+@mixin triangle( $height, $width, $color, $direction: up ){
+	width: 0;
+	height: 0;
+	display: block;
+
+	@if $direction == up {
+		border-left: $width / 2 solid transparent;
+		border-right: $width / 2 solid transparent;
+		border-bottom: $height solid $color;
+	}
+
+	@if $direction == down {
+		border-left: $width / 2 solid transparent;
+		border-right: $width / 2 solid transparent;
+		border-top: $height solid $color;
+	}
+
+	@if $direction == left {
+		border-top: $height / 2 solid transparent;
+		border-bottom: $height / 2 solid transparent;
+		border-right: $width solid $color;
+	}
+
+	@if $direction == right {
+		border-top: $height / 2 solid transparent;
+		border-bottom: $height / 2 solid transparent;
+		border-left: $width solid $color;
+	}
+} 

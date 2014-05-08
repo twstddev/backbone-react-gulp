@@ -1,0 +1,29 @@
+{
+  "name": "Your application name",
+  "version": "0.1.0",
+  "homepage": "application homepage",
+  "authors": [
+    "your name here"
+  ],
+  "description": "Application description",
+  "license": "WTFPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.*",
+    "jquery-migrate": "*",
+    "modernizr": "*",
+    "selectivizr": "*",
+    "requirejs": "*",
+    "lodash": "*",
+    "backbone": "*",
+    "marionette": "*",
+    "handlebars": "*"
+  }
+}

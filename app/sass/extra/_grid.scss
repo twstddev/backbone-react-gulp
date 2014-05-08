@@ -1,0 +1,33 @@
+$column-count: 12;
+
+/**
+ * @brief This file generates very simple
+ * grid columns for different screen sizes.
+ */
+$mobile-columns: "";
+$tablet-columns: "";
+$medium-columns: "";
+$large-columns: "";
+
+@mixin create-columns( $size ) {
+	@for $index from 1 through $column-count {
+		.grid-#{$size}-#{$index} {
+			float: left;
+			width: $index / $column-count * 100%;
+		}
+	}
+}
+
+@include create-columns( l );
+
+@include mobile {
+	@include create-columns( s );
+}
+
+@include tablet {
+	@include create-columns( t );
+}
+
+@include medium {
+	@include create-columns( m );
+}
