@@ -1,9 +1,9 @@
 define( [ 
-	"js/modules/header/main",
+	//"js/modules/header/main",
 	//"js/modules/pages/main",
 	//"js/modules/footer/main"
 	],
-	function( HeaderModule/*, PagesModule, FooterModule*/ ) {
+	function( /*HeaderModule, PagesModule, FooterModule*/ ) {
 	/**
 	 * @brief A singleton object that creates
 	 * main elements of the app.
@@ -19,9 +19,9 @@ define( [
 			// use dirty hacks to get around it
 			var main_fragment = $( document.createDocumentFragment() );
 
-			new HeaderModule( {
-				fragment : main_fragment
-			} );
+			//new HeaderModule( {
+				//fragment : main_fragment
+			//} );
 
 			//main_fragment.append( $( "<section>", { class : "main" } ) );
 

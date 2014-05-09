@@ -1,6 +1,6 @@
 App = null;
 
-describe( "MenuItemsView", function() {
+xdescribe( "MenuItemsView", function() {
 	var menu_items_view = null;
 	var menu_items = null;
 	var fixtures = [

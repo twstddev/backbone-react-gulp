@@ -1,4 +1,4 @@
-describe( "FooterLayout", function() {
+xdescribe( "FooterLayout", function() {
 	var footer_layout = null;
 
 	beforeEach( function( done ) {

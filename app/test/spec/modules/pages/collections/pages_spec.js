@@ -1,4 +1,4 @@
-describe( "Pages", function() {
+xdescribe( "Pages", function() {
 	var pages = null;
 
 	beforeEach( function( done ) {

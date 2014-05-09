@@ -1,6 +1,6 @@
 var App = {};
 
-describe( "Core", function() {
+xdescribe( "Core", function() {
 	var Core = null;
 	var fragment_manager = null;
 	var region_manager = null;

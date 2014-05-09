@@ -1,4 +1,4 @@
-describe( "MenuItemView", function() {
+xdescribe( "MenuItemView", function() {
 	var MenuItemView = null;
 	var MenuItem = null;
 

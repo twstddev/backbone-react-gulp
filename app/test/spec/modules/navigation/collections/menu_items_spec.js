@@ -1,4 +1,4 @@
-describe( "MenuItems", function() {
+xdescribe( "MenuItems", function() {
 	var menu_items = null;
 
 	var fixtures = [

@@ -1,4 +1,4 @@
-describe( "HeaderLayout", function() {
+xdescribe( "HeaderLayout", function() {
 	var header_layout = null;
 
 	beforeEach( function( done ) {

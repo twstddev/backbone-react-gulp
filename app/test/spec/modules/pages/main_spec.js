@@ -1,4 +1,4 @@
-describe( "PageModule", function() {
+xdescribe( "PageModule", function() {
 	var PageModule = null;
 
 	var region = null;

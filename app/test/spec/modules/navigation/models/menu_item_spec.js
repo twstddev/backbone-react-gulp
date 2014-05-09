@@ -1,4 +1,4 @@
-describe( "MenuItem", function() {
+xdescribe( "MenuItem", function() {
 	var MenuItem = null;
 
 	var fixture = {

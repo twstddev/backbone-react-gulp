@@ -1,2 +1,2 @@
-describe( "DefaultPageView", function() {
+xdescribe( "DefaultPageView", function() {
 } );
