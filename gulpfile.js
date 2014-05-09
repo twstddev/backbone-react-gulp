@@ -28,7 +28,7 @@ gulp.task( "development", function( done ) {
 		"clean:build",
 		"compass",
 		"react",
-		"karma:watch",
+		//"karma:watch",
 		"livereload",
 		"open",
 		done

@@ -5,7 +5,8 @@ module.exports = function( gulp ) {
 		return gulp.src( template_files )
 			.pipe( plugins.cached( "react" ) )
 			.pipe( plugins.react() )
-			.pipe( gulp.dest( get_application_path( "js/templates" ) ) );
+			.pipe( gulp.dest( get_application_path( "js/templates" ) ) )
+			.on( "error", output_error );
 	}
 
 	gulp.task( "react", function() {

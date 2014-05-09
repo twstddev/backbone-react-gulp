@@ -1,32 +1,37 @@
 define( [
 	"js/include/header/views/header_layout",
-	//"js/modules/navigation/main",
+	"js/modules/navigation/main",
 	"marionette"
 	],
-	function( HeaderLayout/*, NavigationModule*/ ) {
+	function( HeaderLayout, NavigationModule ) {
 	// contains private data of the object
 	var PrivateScope = function() {
 		this.fragment = null;
-		this.navigation_module = null;
+		this.header_element = null;
 	};
 
 	/**
 	 * @brief Sets layout as the current one and makes it visible.
 	 */
 	PrivateScope.prototype.addLayout = function( layout ) {
-		var header_element = document.createElement( "header" );
-		this.fragment.append( layout.render( header_element ) );
+		this.header_element = document.createElement( "header" );
+		this.fragment.append( layout.render( this.header_element ) );
 
-		//this.addNavigation( layout );
+		this.addNavigation();
 	};
 
 	/**
 	 * @brief Creates and appends navigation menu.
 	 */
-	PrivateScope.prototype.addNavigation = function( header_layout ) {
-		this.navigation_module = new NavigationModule( {
-			region : header_layout.navigation
+	PrivateScope.prototype.addNavigation = function() {
+		var navigation_element = document.createElement( "nav" );
+		var navigation = new NavigationModule( {
+			element : navigation_element
 		} );
+
+		navigation.render( navigation_element );
+
+		this.header_element.appendChild( navigation_element );
 	}
 
 	/**

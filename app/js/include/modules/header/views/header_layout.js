@@ -5,9 +5,9 @@ define( [ "react", "js/templates/header", "marionette" ], function( React, heade
 	var HeaderLayout = function() {
 	};
 
-	HeaderLayout.prototype.render = function( element ) {
+	HeaderLayout.prototype.render = function( element, data ) {
 		React.renderComponent(
-			header_template( {} ),
+			header_template( data ),
 			element
 		);
 

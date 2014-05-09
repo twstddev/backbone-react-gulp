@@ -1,13 +1,14 @@
 define( [
 	"js/include/navigation/collections/menu_items",
-	"js/include/navigation/views/menu_items",
+	"js/include/navigation/views/navigation",
 	"config/fixtures",
 	"marionette"
 	],
-	function( MenuItems, MenuItemsView, fixtures ) {
+	function( MenuItems, NavigationView, fixtures ) {
 	// contains private data of the object
 	var PrivateScope = function() {
-		this.region = null;
+		this.fragment = null;
+		this.navigation_layout = null;
 	};
 
 	/**
@@ -20,25 +21,15 @@ define( [
 	};
 
 	/**
-	 * @brief Prepares a view that represents menu items collection.
-	 *
-	 * @param Backbone.Collection collection is the list of items to
-	 * represent
-	 */
-	PrivateScope.prototype.createMenuItemsView = function( collection ) {
-		return new MenuItemsView( {
-			collection : collection
-		} );
-	};
-
-	/**
 	 * @brief Renders menu layout in the provided region.
 	 */
 	PrivateScope.prototype.createLayout = function() {
 		var menu_items = this.createMenuItems();
-		var menu_items_view = this.createMenuItemsView( menu_items );
 
-		this.region.show( menu_items_view );
+		this.navigation_layout = new NavigationView( App.vent );
+		this.navigation_layout.render( this.fragment, {
+			items : menu_items.toJSON()
+		} );
 	};
 
 	/**
@@ -49,8 +40,11 @@ define( [
 			// create cheshire cat
 			this.d = new PrivateScope();
 
-			this.d.region = options.region;
-			this.d.createLayout();
+			this.d.fragment = options.element;
+		},
+
+		render : function() {
+			return this.d.createLayout();
 		}
 	} );
 
