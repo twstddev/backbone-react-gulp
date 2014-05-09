@@ -27,7 +27,7 @@ gulp.task( "development", function( done ) {
 	run_sequence(
 		"clean:build",
 		"compass",
-		"handlebars",
+		"react",
 		"karma:watch",
 		"livereload",
 		"open",
@@ -44,7 +44,7 @@ gulp.task( "default", function( done ) {
 		"clean:build",
 		"clean:dist",
 		"compass:build",
-		"handlebars:build",
+		"react:build",
 		"imagemin",
 		"usemin",
 		"htmlmin",

@@ -1,9 +1,9 @@
 define( [
 	"js/include/header/views/header_layout",
-	"js/modules/navigation/main",
+	//"js/modules/navigation/main",
 	"marionette"
 	],
-	function( HeaderLayout, NavigationModule ) {
+	function( HeaderLayout/*, NavigationModule*/ ) {
 	// contains private data of the object
 	var PrivateScope = function() {
 		this.fragment = null;
@@ -14,9 +14,10 @@ define( [
 	 * @brief Sets layout as the current one and makes it visible.
 	 */
 	PrivateScope.prototype.addLayout = function( layout ) {
-		layout.render();
-		this.fragment.append( layout.$el );
-		this.addNavigation( layout );
+		var header_element = document.createElement( "header" );
+		this.fragment.append( layout.render( header_element ) );
+
+		//this.addNavigation( layout );
 	};
 
 	/**

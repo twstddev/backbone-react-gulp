@@ -6,7 +6,7 @@ require.config( {
 		"underscore" : "libs/lodash/dist/lodash.underscore",
 		"backbone" : "libs/backbone/backbone",
 		"marionette" : "libs/marionette/lib/backbone.marionette",
-		"handlebars" : "libs/handlebars/handlebars.runtime"
+		"react" : "libs/react/react"
 	},
 
 	shim : {
@@ -27,9 +27,6 @@ require.config( {
 		"marionette" : {
 			deps : [ "backbone" ],
 			exports : "Marionette"
-		},
-		"handlebars" : {
-			exports : "Handlebars"
 		}
 	}
 } );

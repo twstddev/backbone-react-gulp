@@ -1,16 +1,18 @@
-define( [ "js/templates/header", "marionette" ], function( header_template ) {
+define( [ "react", "js/templates/header", "marionette" ], function( React, header_template ) {
 	/**
 	 * @brief Represents HTML layout of the header.
 	 */
-	var HeaderLayout = Backbone.Marionette.Layout.extend( {
-		tagName : "header",
-		className : "main",
-		template : header_template,
+	var HeaderLayout = function() {
+	};
 
-		regions : {
-			navigation : "nav"
-		}
-	} );
+	HeaderLayout.prototype.render = function( element ) {
+		React.renderComponent(
+			header_template( {} ),
+			element
+		);
+
+		return element;
+	};
 
 	return HeaderLayout;
 } );
