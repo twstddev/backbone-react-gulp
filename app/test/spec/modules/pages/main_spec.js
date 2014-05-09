@@ -3,7 +3,7 @@ describe( "PageModule", function() {
 
 	var region = null;
 
-	before( function( done ) {
+	beforeEach( function( done ) {
 		require( [ "js/modules/pages/main" ],
 			function( module ) {
 			PageModule = module;
@@ -25,10 +25,10 @@ describe( "PageModule", function() {
 		Backbone.history.start();
 		Backbone.history.navigate( "/" );
 
-		expect( region.show.calledOnce ).to.be.true;
+		expect( region.show.calledOnce ).toBeTruthy();
 	} );
 
-	after( function() {
+	afterEach( function() {
 		PageModule = null;
 		region = null;
 	} );

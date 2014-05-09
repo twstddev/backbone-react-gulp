@@ -12,7 +12,7 @@ describe( "FooterLayout", function() {
 	} );
 
 	it ( "contains paragraph element", function() {
-		expect( footer_layout.$el.find( "p" ).length ).to.be.eq( 1 );
+		expect( footer_layout.$el.find( "p" ).length ).toBe( 1 );
 	} );
 
 	afterEach( function() {

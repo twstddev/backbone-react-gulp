@@ -2,7 +2,7 @@ describe( "MenuItemView", function() {
 	var MenuItemView = null;
 	var MenuItem = null;
 
-	before( function( done ) {
+	beforeEach( function( done ) {
 		require( [
 			"js/include/navigation/views/menu_item",
 			"js/include/navigation/models/menu_item"
@@ -29,9 +29,9 @@ describe( "MenuItemView", function() {
 
 		var $model_link = menu_item_view.$el.find( "a" );
 
-		expect( $model_link.length ).to.eq( 1 );
-		expect( menu_item_view.$el.html() ).to.contain( menu_item.get( "title" ) );
-		expect( $model_link.attr( "href" ) ).to.eq( menu_item.get( "slug" ) );
+		expect( $model_link.length ).toBe( 1 );
+		expect( menu_item_view.$el.html() ).toContain( menu_item.get( "title" ) );
+		expect( $model_link.attr( "href" ) ).toBe( menu_item.get( "slug" ) );
 	} );
 
 	it( "represents li element", function() {
@@ -40,10 +40,10 @@ describe( "MenuItemView", function() {
 			slug : "/"
 		} ) );
 
-		expect( menu_item_view.tagName ).to.eq( "li" );
+		expect( menu_item_view.tagName ).toBe( "li" );
 	} );
 
-	after( function() {
+	afterEach( function() {
 		MenuItemView = null;
 		MenuItem = null;
 	} );

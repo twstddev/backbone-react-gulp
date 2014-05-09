@@ -6,7 +6,7 @@ describe( "HeaderModule", function() {
 		append : function() {}
 	};
 
-	before( function( done ) {
+	beforeEach( function( done ) {
 		require( [ "js/modules/header/main" ], function( module ) {
 			App = new Backbone.Marionette.Application();
 			HeaderModule = module;
@@ -16,17 +16,16 @@ describe( "HeaderModule", function() {
 	} );
 
 	it( "adds header layout to the given fragment", function() {
-		var fragment_mock = sinon.mock( fragment );
-		fragment_mock.expects( "append" ).once();
+		spyOn( fragment, "append" );
 
 		var header = new HeaderModule( {
 			fragment : fragment
 		} );
 
-		fragment_mock.verify();
+		expect( fragment.append ).toHaveBeenCalled();
 	} );
 
-	after( function() {
+	afterEach( function() {
 		HeaderModule = null;
 	} );
 } );

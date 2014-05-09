@@ -16,9 +16,9 @@ describe( "Page", function() {
 	} );
 
 	it( "returns main attributes", function() {
-		expect( page.get( "title" ) ).to.eq( raw_page.title );
-		expect( page.get( "slug" ) ).to.eq( raw_page.slug );
-		expect( page.get( "content" ) ).to.eq( raw_page.content );
+		expect( page.get( "title" ) ).toBe( raw_page.title );
+		expect( page.get( "slug" ) ).toBe( raw_page.slug );
+		expect( page.get( "content" ) ).toBe( raw_page.content );
 	} );
 
 	afterEach( function() {

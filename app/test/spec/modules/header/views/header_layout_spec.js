@@ -12,11 +12,11 @@ describe( "HeaderLayout", function() {
 	} );
 
 	it( "contains main title", function() {
-		expect( header_layout.$el.find( "h1" ).length ).to.be.eq( 1 );
+		expect( header_layout.$el.find( "h1" ).length ).toBe( 1 );
 	} );
 
 	it( "contains navigation element", function() {
-		expect( header_layout.$el.find( "nav" ).length ).to.be.eq( 1 );
+		expect( header_layout.$el.find( "nav" ).length ).toBe( 1 );
 	} );
 
 	afterEach( function() {

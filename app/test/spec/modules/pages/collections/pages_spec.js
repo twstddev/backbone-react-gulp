@@ -17,13 +17,13 @@ describe( "Pages", function() {
 	it( "returns page by slug", function() {
 		var gallery_page = pages.findWhere( { slug : "gallery" } );
 
-		expect( gallery_page.get( "title" ) ).to.eq( "Gallery Page" );
+		expect( gallery_page.get( "title" ) ).toBe( "Gallery Page" );
 	} );
 	
 	it( "returns home page if empty slug is requested", function() {
 		var default_page = pages.findWhere( { slug : "" } );
 
-		expect( default_page.get( "title" ) ).to.eq( "Home Page" );
+		expect( default_page.get( "title" ) ).toBe( "Home Page" );
 	} );
 
 	afterEach( function() {

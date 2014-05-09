@@ -6,7 +6,7 @@ describe( "NavigationModule", function() {
 		show : function() {}
 	};
 
-	before( function( done ) {
+	beforeEach( function( done ) {
 		require( [ "js/modules/navigation/main" ],
 			function( module ) {
 			App = new Backbone.Marionette.Application();
@@ -17,17 +17,16 @@ describe( "NavigationModule", function() {
 	} );
 
 	it( "adds navigation to the given region", function() {
-		var region_mock = sinon.mock( region );
-		region_mock.expects( "show" ).once();
+		spyOn( region, "show" );
 
 		var navigation = new NavigationModule( {
 			region : region
 		} );
 
-		region_mock.verify();
+		expect( region.show ).toHaveBeenCalled();
 	} );
 
-	after( function() {
+	afterEach( function() {
 		NavigationModule = null;
 	} );
 } );

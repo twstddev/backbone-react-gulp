@@ -4,7 +4,7 @@ describe( "FooterModule", function() {
 		append : function() {}
 	};
 
-	before( function( done ) {
+	beforeEach( function( done ) {
 		require( [ "js/modules/footer/main" ], function( module ) {
 			FooterModule = module;
 
@@ -13,17 +13,16 @@ describe( "FooterModule", function() {
 	} );
 
 	it( "adds footer layout to the given fragment", function() {
-		var fragment_mock = sinon.mock( fragment );
-		fragment_mock.expects( "append" ).once();
+		spyOn( fragment, "append" );
 
 		var footer = new FooterModule( {
 			fragment : fragment
 		} );
 
-		fragment_mock.verify();
+		expect( fragment.append ).toHaveBeenCalled();
 	} );
 
-	after( function() {
+	afterEach( function() {
 		FooterModule = null;
 	} );
 } );

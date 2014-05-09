@@ -16,7 +16,7 @@ describe( "MenuItemsView", function() {
 		}
 	];
 
-	before( function( done ) {
+	beforeEach( function( done ) {
 		require( [ "marionette" ], function() {
 			App = new Backbone.Marionette.Application();
 			App.vent.trigger = sinon.spy();
@@ -43,17 +43,17 @@ describe( "MenuItemsView", function() {
 	} );
 
 	it( "represents ul list", function() {
-		expect( menu_items_view.tagName ).to.eq( "ul" );
+		expect( menu_items_view.tagName ).toBe( "ul" );
 	} );
 
 	it( "represents passed collection", function() {
-		expect( menu_items_view.$el.find( "li" ).length ).to.eq( 2 );
+		expect( menu_items_view.$el.find( "li" ).length ).toBe( 2 );
 	} );
 
 	it( "sends event on menu item click", function() {
 		menu_items_view.$el.find( "a" ).eq( 0 ).click();
 
-		expect( App.vent.trigger.calledOnce ).to.be.true;
+		expect( App.vent.trigger.calledOnce ).toBeTruthy();
 	} );
 
 	afterEach( function() {

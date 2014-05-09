@@ -6,7 +6,7 @@ describe( "MenuItem", function() {
 		slug : "/"
 	};
 
-	before( function( done ) {
+	beforeEach( function( done ) {
 		require( [ "js/include/navigation/models/menu_item" ],
 			function( model ) {
 			MenuItem = model;
@@ -17,11 +17,11 @@ describe( "MenuItem", function() {
 	it ( "responds to main attributes", function() {
 		var menu_item = new MenuItem( fixture );
 
-		expect( menu_item.get( "title" ) ).to.eq( fixture.title );
-		expect( menu_item.get( "slug" ) ).to.eq( fixture.slug );
+		expect( menu_item.get( "title" ) ).toBe( fixture.title );
+		expect( menu_item.get( "slug" ) ).toBe( fixture.slug );
 	} );
 
-	after( function() {
+	afterEach( function() {
 		MenuItem = null;
 	} );
 } );
