@@ -1,3 +1,27 @@
+if (!Function.prototype.bind) {
+  Function.prototype.bind = function (oThis) {
+    if (typeof this !== "function") {
+      // closest thing possible to the ECMAScript 5 internal IsCallable function
+      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    var aArgs = Array.prototype.slice.call(arguments, 1), 
+        fToBind = this, 
+        fNOP = function () {},
+        fBound = function () {
+          return fToBind.apply(this instanceof fNOP && oThis
+                                 ? this
+                                 : oThis,
+                               aArgs.concat(Array.prototype.slice.call(arguments)));
+        };
+
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+
+    return fBound;
+  };
+}
+
 var allTestFiles = [];
 var TEST_REGEXP = /(spec|test)\.js$/i;
 
@@ -22,7 +46,7 @@ require.config({
 		"underscore" : "libs/lodash/dist/lodash.underscore",
 		"backbone" : "libs/backbone/backbone",
 		"marionette" : "libs/marionette/lib/backbone.marionette",
-		"handlebars" : "libs/handlebars/handlebars.runtime"
+		"react" : "libs/react/react"
 	},
 
 	shim : {
@@ -43,9 +67,6 @@ require.config({
 		"marionette" : {
 			deps : [ "backbone" ],
 			exports : "Marionette"
-		},
-		"handlebars" : {
-			exports : "Handlebars"
 		}
 	},
 

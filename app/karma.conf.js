@@ -20,7 +20,7 @@ module.exports = function(config) {
       {pattern: 'libs/lodash/dist/lodash.underscore.js', included: false},
       {pattern: 'libs/backbone/backbone.js', included: false},
       {pattern: 'libs/marionette/lib/backbone.marionette.js', included: false},
-      {pattern: 'libs/handlebars/handlebars.runtime.js', included: false},
+      {pattern: 'libs/react/react.js', included: false},
       {pattern: 'config/**/*.js', included: false},
       {pattern: 'js/**/*.js', included: false},
       {pattern: 'test/**/*.js', included: false}
