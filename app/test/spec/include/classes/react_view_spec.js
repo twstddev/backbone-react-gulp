@@ -28,12 +28,12 @@ describe( "ReactView", function() {
 				},
 
 				clicked : function() {
-				}
-			} );
+				},
 
-			view_dummy = new CustomView( {
 				component : component
 			} );
+
+			view_dummy = new CustomView( {} ); 
 
 			element = document.createElement( "section" );
 

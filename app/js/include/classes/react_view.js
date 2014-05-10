@@ -5,12 +5,7 @@ define( [ "react", "backbone" ], function( React ) {
 	 */
 	var ReactView = function( options ) {
 		this.options = options || {};
-		this.m_component = Marionette.getOption( this, "component" );
 		this.m_element = null;
-
-		if ( !this.m_component ) {
-			throw "A component must be specified";
-		}
 
 		if ( !this.data ) {
 			this.data = {};
@@ -38,7 +33,7 @@ define( [ "react", "backbone" ], function( React ) {
 		var properties = _.extend( this.data, { callbacks : this.callbacks } );
 
 		React.renderComponent( 
-			this.m_component( properties ),
+			this.component( properties ),
 			this.m_element
 		);
 	};
@@ -50,9 +45,9 @@ define( [ "react", "backbone" ], function( React ) {
 	ReactView.prototype.close = function() {
 		React.unmountComponentAtNode( this.m_element );
 
-		delete this.m_component;
+		delete this.component;
 		this.m_element = null;
-		this.m_component = null;
+		this.component = null;
 	};
 
 	ReactView.extend = Backbone.Model.extend;

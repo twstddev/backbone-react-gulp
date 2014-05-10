@@ -1,4 +1,4 @@
-xdescribe( "FooterModule", function() {
+describe( "FooterModule", function() {
 	var FooterModule = null;
 	var fragment = {
 		append : function() {}

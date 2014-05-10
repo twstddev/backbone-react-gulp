@@ -1,9 +1,9 @@
 define( [ 
 	//"js/modules/header/main",
 	//"js/modules/pages/main",
-	//"js/modules/footer/main"
+	"js/modules/footer/main"
 	],
-	function( /*HeaderModule, PagesModule, FooterModule*/ ) {
+	function( /*HeaderModule, PagesModule, */FooterModule ) {
 	/**
 	 * @brief A singleton object that creates
 	 * main elements of the app.
@@ -25,9 +25,9 @@ define( [
 
 			//main_fragment.append( $( "<section>", { class : "main" } ) );
 
-			//new FooterModule( {
-				//fragment : main_fragment
-			//} );
+			new FooterModule( {
+				fragment : main_fragment
+			} );
 
 			$( "body" ).prepend( main_fragment );
 

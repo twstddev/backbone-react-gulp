@@ -1,14 +1,14 @@
 /** @jsx React.DOM */
 define( [ "react" ], function( React ) {
-	var Header = React.createClass( {
+	var Footer = React.createClass( {
 		render : function() {
 			return (
-				<h1>
-					<a href="#">Application Title</a>
-				</h1>
+				<p>
+					Copyright goes here
+				</p>
 			);
 		}
 	} );
 
-	return Header;
+	return Footer;
 } );
