@@ -1,4 +1,4 @@
-xdescribe( "MenuItem", function() {
+describe( "MenuItem", function() {
 	var MenuItem = null;
 
 	var fixture = {
@@ -7,7 +7,7 @@ xdescribe( "MenuItem", function() {
 	};
 
 	beforeEach( function( done ) {
-		require( [ "js/include/navigation/models/menu_item" ],
+		require( [ "js/include/modules/navigation/models/menu_item" ],
 			function( model ) {
 			MenuItem = model;
 			done();

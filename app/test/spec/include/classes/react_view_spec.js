@@ -1,4 +1,3 @@
-
 describe( "ReactView", function() {
 	var view_dummy = null;
 	var component = null;
@@ -20,11 +19,7 @@ describe( "ReactView", function() {
 
 			var CustomView = ReactView.extend( {
 				callbacks : {
-					clicked : this.clicked
-				},
-
-				data : {
-					meta : "value"
+					clicked : "clicked"
 				},
 
 				clicked : function() {

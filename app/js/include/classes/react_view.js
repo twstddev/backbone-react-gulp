@@ -6,9 +6,21 @@ define( [ "react", "backbone" ], function( React ) {
 	var ReactView = function( options ) {
 		this.options = options || {};
 		this.m_element = null;
+		this.m_data = Marionette.getOption( this, "data" );
 
-		if ( !this.data ) {
-			this.data = {};
+		if ( !this.m_data ) {
+			this.m_data = {};
+		}
+
+		// bind callbacks to methods
+		if ( this.callbacks ) {
+			var that = this;
+
+			_.each( _.keys( this.callbacks ), function( callback ) {
+				var method_name = that.callbacks[ callback ];
+
+				that.callbacks[ callback ] = _.bind( that[ method_name ], that );
+			} );
 		}
 
 		if ( this.initialize ) {
@@ -30,7 +42,7 @@ define( [ "react", "backbone" ], function( React ) {
 
 		this.m_element = element;
 
-		var properties = _.extend( this.data, { callbacks : this.callbacks } );
+		var properties = _.extend( this.m_data, { callbacks : this.callbacks } );
 
 		React.renderComponent( 
 			this.component( properties ),

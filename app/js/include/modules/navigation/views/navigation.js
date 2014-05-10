@@ -1,23 +1,18 @@
-define( [ "react", "js/templates/menu" ], function( React, menu_template ) {
+define( [ "js/include/classes/react_view", "js/templates/menu" ], function( ReactView, menu_component ) {
 	/**
 	 * @brief Represents HTML layout of the navigation.
 	 */
-	var NavigationLayout = function( event_dispatcher ) {
-		this.event_dispatcher = event_dispatcher;
-	};
+	var NavigationView = ReactView.extend( {
+		component : menu_component,
 
-	NavigationLayout.prototype.render = function( element, data ) {
-		var extended_data = _.extend( {
-			vent : this.event_dispatcher
-		}, data );
+		callbacks : {
+			clicked : "signalNavigationSlug"
+		},
 
-		React.renderComponent(
-			menu_template( extended_data ),
-			element
-		);
+		signalNavigationSlug : function( slug ) {
+			App.vent.trigger( "pages:change", slug );
+		}
+	} );
 
-		return element;
-	};
-
-	return NavigationLayout;
+	return NavigationView;
 } );

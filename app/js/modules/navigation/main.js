@@ -1,14 +1,15 @@
 define( [
-	"js/include/navigation/collections/menu_items",
-	"js/include/navigation/views/navigation",
+	"js/include/classes/react_region",
+	"js/include/modules/navigation/collections/menu_items",
+	"js/include/modules/navigation/views/navigation",
 	"config/fixtures",
 	"marionette"
 	],
-	function( MenuItems, NavigationView, fixtures ) {
+	function( ReactRegion, MenuItems, NavigationView, fixtures ) {
 	// contains private data of the object
 	var PrivateScope = function() {
 		this.fragment = null;
-		this.navigation_layout = null;
+		this.region = null;
 	};
 
 	/**
@@ -26,11 +27,34 @@ define( [
 	PrivateScope.prototype.createLayout = function() {
 		var menu_items = this.createMenuItems();
 
-		this.navigation_layout = new NavigationView( App.vent );
-		this.navigation_layout.render( this.fragment, {
-			items : menu_items.toJSON()
-		} );
+		this.createRegion();
+		this.showView( new NavigationView( {
+			data : {
+				items : menu_items.toJSON()
+			}
+		} ) );
 	};
+
+	/**
+	 * @brief Creates a new element for the navigation
+	 * and saves it to a region.
+	 */
+	PrivateScope.prototype.createRegion = function() {
+		this.region = new ReactRegion( {
+			el : this.fragment
+		} );
+	}
+
+	/**
+	 * @brief Sets given view as the main one
+	 * in the current region.
+	 *
+	 * param[in] ReactView view is a view that contains 
+	 * header React component.
+	 */
+	PrivateScope.prototype.showView = function( view ) {
+		this.region.show( view );
+	}
 
 	/**
 	 * @brief Adds main navigation to the application.
@@ -41,10 +65,7 @@ define( [
 			this.d = new PrivateScope();
 
 			this.d.fragment = options.element;
-		},
-
-		render : function() {
-			return this.d.createLayout();
+			this.d.createLayout();
 		}
 	} );
 

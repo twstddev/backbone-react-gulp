@@ -1,32 +1,22 @@
 App = null;
 
-xdescribe( "NavigationModule", function() {
+describe( "NavigationModule", function() {
 	var NavigationModule = null;
-	var region = {
-		show : function() {}
-	};
+	var element = null;
 
 	beforeEach( function( done ) {
 		require( [ "js/modules/navigation/main" ],
 			function( module ) {
 			App = new Backbone.Marionette.Application();
 			NavigationModule = module;
+			element = document.createElement( "div" );
 
 			done();
 		} );
 	} );
 
-	it( "adds navigation to the given region", function() {
-		spyOn( region, "show" );
-
-		var navigation = new NavigationModule( {
-			region : region
-		} );
-
-		expect( region.show ).toHaveBeenCalled();
-	} );
-
 	afterEach( function() {
 		NavigationModule = null;
+		element = null;
 	} );
 } );

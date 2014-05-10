@@ -1,13 +1,15 @@
 define( [
 	"js/include/classes/react_region",
 	"js/include/modules/header/views/header",
+	"js/modules/navigation/main",
 	"marionette"
 	],
-	function( ReactRegion, HeaderView ) {
+	function( ReactRegion, HeaderView, NavigationModule ) {
 	// contains private data of the object
 	var PrivateScope = function() {
 		this.fragment = null;
 		this.region = null;
+		this.navigation = null;
 	};
 
 	/**
@@ -16,6 +18,7 @@ define( [
 	PrivateScope.prototype.addLayout = function() {
 		this.createRegion();
 		this.showView( new HeaderView );
+		this.addNavigation();
 	};
 
 	/**
@@ -49,13 +52,12 @@ define( [
 	 */
 	PrivateScope.prototype.addNavigation = function() {
 		var navigation_element = document.createElement( "nav" );
-		var navigation = new NavigationModule( {
+
+		this.navigation = new NavigationModule( {
 			element : navigation_element
 		} );
 
-		navigation.render( navigation_element );
-
-		this.header_element.appendChild( navigation_element );
+		this.region.m_el.appendChild( navigation_element );
 	}
 
 	/**

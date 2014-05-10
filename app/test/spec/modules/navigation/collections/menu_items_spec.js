@@ -1,4 +1,4 @@
-xdescribe( "MenuItems", function() {
+describe( "MenuItems", function() {
 	var menu_items = null;
 
 	var fixtures = [
@@ -15,7 +15,7 @@ xdescribe( "MenuItems", function() {
 	];
 
 	beforeEach( function( done ) {
-		require( [ "js/include/navigation/collections/menu_items" ],
+		require( [ "js/include/modules/navigation/collections/menu_items" ],
 			function( MenuItems ) {
 			menu_items = new MenuItems( fixtures );
 
