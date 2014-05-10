@@ -1,24 +1,48 @@
 define( [
-	"js/include/header/views/header_layout",
-	"js/modules/navigation/main",
+	"js/include/classes/react_region",
+	"js/include/modules/header/views/header",
 	"marionette"
 	],
-	function( HeaderLayout, NavigationModule ) {
+	function( ReactRegion, HeaderView ) {
 	// contains private data of the object
 	var PrivateScope = function() {
 		this.fragment = null;
-		this.header_element = null;
+		this.region = null;
 	};
 
 	/**
 	 * @brief Sets layout as the current one and makes it visible.
 	 */
-	PrivateScope.prototype.addLayout = function( layout ) {
-		this.header_element = document.createElement( "header" );
-		this.fragment.append( layout.render( this.header_element ) );
-
-		this.addNavigation();
+	PrivateScope.prototype.addLayout = function() {
+		this.createRegion();
+		this.showView( new HeaderView );
 	};
+
+	/**
+	 * @brief Creates a new element for the header
+	 * and saves it to a region.
+	 */
+	PrivateScope.prototype.createRegion = function() {
+		var header = document.createElement( "header" );
+		header.className = "main";
+		
+		this.region = new ReactRegion( {
+			el : header
+		} );
+
+		this.fragment.append( this.region.m_el );
+	}
+
+	/**
+	 * @brief Sets given view as the main one
+	 * in the current region.
+	 *
+	 * param[in] ReactView view is a view that contains 
+	 * header React component.
+	 */
+	PrivateScope.prototype.showView = function( view ) {
+		this.region.show( view );
+	}
 
 	/**
 	 * @brief Creates and appends navigation menu.
@@ -47,7 +71,7 @@ define( [
 			this.d = new PrivateScope();
 
 			this.d.fragment = options.fragment;
-			this.d.addLayout( new HeaderLayout );
+			this.d.addLayout();
 		}
 	} );
 

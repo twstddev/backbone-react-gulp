@@ -19,7 +19,7 @@ define( [
 	};
 
 	/**
-	 * @brief Creates new element for the header
+	 * @brief Creates a new element for the footer
 	 * and saves it to a region.
 	 */
 	PrivateScope.prototype.createRegion = function() {
