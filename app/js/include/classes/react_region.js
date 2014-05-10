@@ -1,4 +1,4 @@
-define( [ "marionette" ], function() {
+define( [ "backbone" ], function() {
 	/**
 	 * @brief This is a simple class that manages
 	 * React components in the given region.
@@ -16,7 +16,6 @@ define( [ "marionette" ], function() {
 			var args = Array.prototype.slice.apply( arguments );
 			this.initialize.apply( this, args );
 		}
-
 	};
 
 	/**
@@ -63,7 +62,7 @@ define( [ "marionette" ], function() {
 		this.m_current_component.render( this.m_el );
 	}
 
-	ReactRegion.extend = Backbone.extend;
+	ReactRegion.extend = Backbone.Model.extend;
 
 	return ReactRegion;
 } );
