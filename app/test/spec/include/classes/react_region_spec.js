@@ -30,10 +30,16 @@ describe( "ReactRegion", function() {
 		expect( component.render ).toHaveBeenCalled();
 	} );
 
+	it( "sets given component as the current one", function() {
+		region_dummy.show( component );
+
+		expect( region_dummy.m_current_component ).toEqual( component );
+	} );
+
 	it( "passes element to render function of a component", function() {
 		region_dummy.show( component );
 
-		expect( component.render ).toHaveBeenCalledWith( region_dummy.el );
+		expect( component.render ).toHaveBeenCalledWith( region_dummy.m_el );
 	} );
 
 	it( "calls remove on component when closed", function() {
@@ -54,6 +60,7 @@ describe( "ReactRegion", function() {
 
 		expect( component.close ).toHaveBeenCalled();
 		expect( component2.render ).toHaveBeenCalled();
+		expect( region_dummy.m_current_component ).toEqual( component2 );
 	} );
 
 
