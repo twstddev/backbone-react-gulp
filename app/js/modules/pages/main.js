@@ -1,23 +1,17 @@
 define( [ 
-	"js/include/pages/views/default_page",
-	"js/include/pages/collections/pages",
+	"js/include/modules/pages/views/default_page",
+	"js/include/classes/react_region",
+	"js/include/modules/pages/collections/pages",
 	"config/fixtures",
 	"marionette"
 	],
-	function( DefaultPageView, Pages, fixtures ) {
+	function( DefaultPageView, ReactRegion, Pages, fixtures ) {
 	// private scope of the module
 	var PrivateScope = function() {
+		this.fragment = null;
+		this.router = null;
 		this.region = null;
 		this.pages = new Pages( fixtures.pages );
-		this.router = null;
-	};
-
-	/**
-	 * @brief Initializes pager with the first page that should
-	 * be visible on landing.
-	 */
-	PrivateScope.prototype.initializePage = function() {
-		//this.setCurrentPage( "/" );
 	};
 
 	/**
@@ -31,10 +25,32 @@ define( [
 
 		if ( new_current_page ) {
 			this.region.show( new DefaultPageView( {
-				model : new_current_page
+				data : new_current_page.toJSON()
 			} ) );
 		}
 	};
+
+	/**
+	 * @brief Creates main region that contains pages.
+	 */
+	PrivateScope.prototype.addLayout = function() {
+		this.createRegion();
+	};
+
+	/**
+	 * @brief Creates a new element for pages
+	 * and saves it to a region.
+	 */
+	PrivateScope.prototype.createRegion = function() {
+		var section = document.createElement( "section" );
+		section.className = "main";
+
+		this.region = new ReactRegion( {
+			el : section
+		} );
+
+		this.fragment.append( this.region.m_el );
+	}
 
 	/**
 	 * @brief Creates page specific router.
@@ -58,9 +74,9 @@ define( [
 			// create cheshire cat
 			this.d = new PrivateScope();
 
-			this.d.region = options.region;
 			this.d.parent = this;
-			this.d.initializePage();
+			this.d.fragment = options.fragment;
+			this.d.addLayout();
 			this.d.createRouter();
 
 			this.listenTo( App.vent, "pages:change", this.navigateToGivenSlug );

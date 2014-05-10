@@ -1,20 +1,10 @@
-define( [ "js/templates/default_page", "marionette" ],
-	function( Template ) {
+define( [ "js/include/classes/react_view", "js/templates/default_page" ],
+	function( ReactView, default_template ) {
 	/**
 	 * @brief Implements default view for a page.
 	 */
-	var DefaultPageView = Backbone.Marionette.ItemView.extend( {
-		tagName : "article",
-		template : Template,
-
-		initialize : function() {
-			this.$el.addClass( "hidden" );
-		},
-
-		onShow : function() {
-			this.$el.focus();
-			this.$el.removeClass( "hidden" );
-		}
+	var DefaultPageView = ReactView.extend( {
+		component : default_template
 	} );
 
 	return DefaultPageView;

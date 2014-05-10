@@ -1,35 +1,32 @@
-xdescribe( "PageModule", function() {
-	var PageModule = null;
-
-	var region = null;
+describe( "PageModule", function() {
+	var fragment = {
+		append : function() {}
+	};
 
 	beforeEach( function( done ) {
 		require( [ "js/modules/pages/main" ],
 			function( module ) {
 			PageModule = module;
-			region = new Backbone.Marionette.Region( {
-				el : "div"
-			} );
-
-			region.show = sinon.spy();
 
 			done();
 		} );
 	} );
 
 	it( "adds page to the given region", function() {
+		spyOn( fragment, "append" );
+
 		new PageModule( {
-			region : region
+			fragment : fragment
 		} );
 
 		Backbone.history.start();
 		Backbone.history.navigate( "/" );
 
-		expect( region.show.calledOnce ).toBeTruthy();
+		expect( fragment.append ).toBeTruthy();
 	} );
 
 	afterEach( function() {
 		PageModule = null;
-		region = null;
+		fragment = null;
 	} );
 } );

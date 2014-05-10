@@ -1,9 +1,9 @@
 define( [ 
 	"js/modules/header/main",
-	//"js/modules/pages/main",
+	"js/modules/pages/main",
 	"js/modules/footer/main"
 	],
-	function( HeaderModule, /*PagesModule, */FooterModule ) {
+	function( HeaderModule, PagesModule, FooterModule ) {
 	/**
 	 * @brief A singleton object that creates
 	 * main elements of the app.
@@ -23,21 +23,15 @@ define( [
 				fragment : main_fragment
 			} );
 
-			//main_fragment.append( $( "<section>", { class : "main" } ) );
+			new PagesModule( {
+				fragment : main_fragment
+			} );
 
 			new FooterModule( {
 				fragment : main_fragment
 			} );
 
 			$( "body" ).prepend( main_fragment );
-
-			//region_manager.addRegions( {
-				//pages : "section.main"
-			//} );
-
-			//new PagesModule( {
-				//region : region_manager.pages
-			//} );
 		};
 
 		return {

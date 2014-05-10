@@ -9,7 +9,7 @@ define( [ "react" ], function( React ) {
 		render : function() {
 			return (
 				<li>
-					<a href={ this.props.slug } title={ this.props.title } onClick={ this.clicked }>
+					<a key={ this.props.key } href={ this.props.slug } title={ this.props.title } onClick={ this.clicked }>
 						{ this.props.title }
 					</a>
 				</li>

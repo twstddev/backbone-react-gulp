@@ -1,6 +1,6 @@
 App = null;
 
-xdescribe( "HeaderModule", function() {
+describe( "HeaderModule", function() {
 	var HeaderModule = null;
 	var fragment = {
 		append : function() {}

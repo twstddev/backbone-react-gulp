@@ -5,7 +5,7 @@ define( [ "react", "js/templates/menu_item" ], function( React, MenuItem ) {
 			var that = this;
 
 			var items = _.map( this.props.items, function( menu_item ) {
-				return <MenuItem title={ menu_item.title } slug={ menu_item.slug } click={ that.props.callbacks.clicked } />
+				return <MenuItem title={ menu_item.title } slug={ menu_item.slug } key={ menu_item.id } click={ that.props.callbacks.clicked } />
 			} );
 
 			return (

@@ -1,10 +1,10 @@
-xdescribe( "Page", function() {
+describe( "Page", function() {
 	var page = null;
 	var raw_page = null;
 
 	beforeEach( function( done ) {
 		require( [ 
-			"js/include/pages/models/page" ,
+			"js/include/modules/pages/models/page" ,
 			"config/fixtures"
 			],
 			function( Page, Fixtures ) {

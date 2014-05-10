@@ -1,9 +1,9 @@
-xdescribe( "Pages", function() {
+describe( "Pages", function() {
 	var pages = null;
 
 	beforeEach( function( done ) {
 		require( [ 
-			"js/include/pages/collections/pages",
+			"js/include/modules/pages/collections/pages",
 			"config/fixtures"
 			],
 			function( Pages, Fixtures ) {
